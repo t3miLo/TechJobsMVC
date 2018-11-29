@@ -2,6 +2,31 @@
 
 <h3>@ViewBag.jobs.Count Result(s)</h3>
 
-@{ 
-    // TODO #3 - Use the same list display from Views/Search/Index.cshtml 
+@{
+	// TODO #3 - Use the same list display from Views/Search/Index.cshtml
+	<table>
+			@foreach (Dictionary<string, string> jobs in ViewBag.jobs)
+			{
+				@for (int i = 0; i < ViewBag.jobs.Count; i++)
+				{
+					<tbody>
+					
+						@foreach (KeyValuePair<string, string> job in jobs)
+							{
+							<tr class="@(i % 2 == 0 ? "even" : "odd")">
+
+								<td>@(String.Format("{0} ", job.Key))</td>
+								<td>@(String.Format("{0}", job.Value))</td>
+
+							</tr>
+							}
+						<tr>
+							<td>******************* </td>
+							<td>*******************</td>
+						</tr>
+					</tbody>
+				}
+			
+			}
+	</table>
 }
